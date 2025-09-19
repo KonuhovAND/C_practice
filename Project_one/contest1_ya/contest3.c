@@ -2,9 +2,11 @@
 #include <stdio.h>
 #include <locale.h>
 
-int not_1main() {
+int main() {
 	int a;
 	setlocale(0, "");
 	scanf("%d", &a);
-	printf("Первая цифра -> %d\nПоследняя цифра -> %d",a/100,a%10);
+	// printf("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ -> %d\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ -> %d",a/100,a%10);
+	printf("Hello world!");
+	return 0;
 }
