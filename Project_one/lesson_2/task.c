@@ -50,7 +50,7 @@ int ifelseexample(){
 }
 
 
-int main(){
+int scanf_example(){
     int a,b,x;
     setlocale(0,"");
     // защита от дурака
@@ -64,6 +64,7 @@ int main(){
     }
 
     // b = 1.2, x = 1
+
     x = scanf("%d",&b);
      if(x == 0){
         printf("Entered not number!");
@@ -86,5 +87,61 @@ int main(){
         printf("%d = %d",a,b);
         return 0;
         }
+    return 0;
+}
+
+int protect_from_fool(){
+    // int x; -> useless
+    char a,b;
+    setlocale(0,"");
+    // useless
+    // a = "any stuff", x = 1
+    //     if(x == 0){
+    //     printf("Entered not number!");
+    //     return 0;
+    // }
+
+    // x = scanf("%d",&b);
+    //  if(x == 0){
+    //     printf("Entered not number!");
+    //     return 0;
+    // }
+
+    // work poorly 
+    // Enter... : a b
+    // output: a
+    scanf("Enter two characters: %c%c",&a,&b);
+    
+    char buf;
+    scanf("%c",&a);
+    scanf("%c",&buf);
+    scanf("%c",&b);
+
+
+    printf("%c %c",a,b);
+   
+    return 0;
+}
+
+int main(){
+    char a,b,buf;
+    setlocale(0,"");
+
+    printf("Enter character\n");
+    
+    scanf("%c",&a);
+    // (!(...)) - not 
+    // (...) - character 
+    if (!(a >= 'a' && a <= 'z'|| a >= 'A' && a <= 'Z')){
+        printf("Enter character: ");
+        scanf("%c",&a);
+        return 0;
+
+    }
+    scanf("%c",&buf);
+    scanf("%c",&b);
+
+    printf("%c%c%c");    
+    printf("%c >> %d",a,a);
     return 0;
 }
