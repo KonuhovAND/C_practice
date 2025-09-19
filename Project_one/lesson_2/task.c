@@ -15,7 +15,7 @@
 // }
 
 // Условный оператор
-int main(){
+int ifelseexample(){
     int a;
     float b,r1,r2;
     r1 = 10; r2 = 10;
@@ -44,6 +44,46 @@ int main(){
     if (a == b)
         {
         printf("%d = %.2f",a,b);
+        return 0;
+        }
+    return 0;
+}
+
+
+int main(){
+    int a,b,x;
+    setlocale(0,"");
+    // защита от дурака
+    x = scanf("%d",&a);
+    // a = '',x = 0
+    // a = 123, x = 1
+    // a = 123.456,x = 0
+    if(x == 0){
+        printf("Entered not number!");
+        return 0;
+    }
+
+    // b = 1.2, x = 1
+    x = scanf("%d",&b);
+     if(x == 0){
+        printf("Entered not number!");
+        return 0;
+    }
+
+   
+    if (a > b)
+        {
+        printf("%d > %d",a,b);
+        return 0;
+        }
+    if (a < b)
+        {
+        printf("%d<%d",a,b);
+        return 0;
+        }
+    if (a == b)
+        {
+        printf("%d = %d",a,b);
         return 0;
         }
     return 0;
