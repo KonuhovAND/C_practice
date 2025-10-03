@@ -2,18 +2,26 @@
 #define N 100
 #include <stdio.h>
 #include <locale.h>
+#include <stdlib.h>
 
 int main(){
     setlocale(0,"");
     // its correct >>
-    int i,massive[N];
+    int i,*massive;
 
     int n;
     printf("Enter size of list: \n");
     int fool_proof = scanf("%d",&n);
     //int m[n]; - can be possible, but its incorrect
 
+    
+    // динамично выделили память, не из стека, а из кучи
+    massive = malloc(sizeof(int) * n);
 
+    if (massive == NULL){
+        printf("Error in memory\n");
+        return 0;
+    }
     printf("Enter elem of list: \n");
     for (int i = 0; i < n; i++)
     {
@@ -56,40 +64,43 @@ int main(){
 
     // massive[imin] = max;
     // massive[imax] = min;
-    int flag = 0;
+    // int flag = 0;
     
-    for (int i = 0; i < n - 1; i++)
-    {
-        /* code */
-        if (massive[i] > massive[i+1]){
-            printf("Massive is not sorted!\n");
-            flag = 1;
-            //return 0; -- okay, but break more suitable
-            break;
-        }
+    // for (int i = 0; i < n - 1; i++)
+    // {
+    //     /* code */
+    //     if (massive[i] > massive[i+1]){
+    //         printf("Massive is not sorted!\n");
+    //         flag = 1;
+    //         //return 0; -- okay, but break more suitable
+    //         break;
+    //     }
     
-    }
-    if (!flag){
-    printf("Massive is sorted!))\n");
-    }
+    // }
+    // if (!flag){
+    // printf("Massive is sorted!))\n");
+    // }
 
-    int tmp,k = 1;
-    while (k){
-        for (i = 0,k = 0; i < n - 1; i++)
-        {
-            if (massive[i] > massive[i+1]){
-                tmp = massive[i];
-                massive[i] = massive[i+1];
-                massive[i+1] = tmp;
-                k++;
-            }
-        }
-    }
+    // int tmp,k = 1;
+    // while (k){
+    //     for (i = 0,k = 0; i < n - 1; i++)
+    //     {
+    //         if (massive[i] > massive[i+1]){
+    //             tmp = massive[i];
+    //             massive[i] = massive[i+1];
+    //             massive[i+1] = tmp;
+    //             k++;
+    //         }
+    //    }
+    // }
 
     printf("Entered list: \n");
-    for (i= 0;i < n; i++){
+    for (int i= 0;i < n; i++){
     printf("%d ",massive[i]);
     }
+
+
+    free(massive);
     return 0;
 
 }
