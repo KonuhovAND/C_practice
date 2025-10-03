@@ -7,16 +7,18 @@
 int main(){
     setlocale(0,"");
     // its correct >>
-    int i,*massive;
-
+    int i;
+    char *massive,buff;
     int n;
     printf("Enter size of list: \n");
     int fool_proof = scanf("%d",&n);
+    scanf("%c",&buff); // >> important for characters
+    
     //int m[n]; - can be possible, but its incorrect
 
     
     // динамично выделили память, не из стека, а из кучи
-    massive = malloc(sizeof(int) * n);
+    massive = malloc(sizeof(char) * n);
 
     if (massive == NULL){
         printf("Error in memory\n");
@@ -25,7 +27,8 @@ int main(){
     printf("Enter elem of list: \n");
     for (int i = 0; i < n; i++)
     {
-        int fool_proof = scanf("%d",&massive[i]);
+        
+        int fool_proof = scanf("%c",&massive[i]);
     }
 
     // printf("Entered list: \n");
@@ -42,7 +45,7 @@ int main(){
     // }
     
 
-    printf("\n");
+    //printf("\n");
     // int min,max;
     // int imin,imax;
     // min = max = massive[0];
@@ -96,7 +99,7 @@ int main(){
 
     printf("Entered list: \n");
     for (int i= 0;i < n; i++){
-    printf("%d ",massive[i]);
+    printf("%c ",massive[i]);
     }
 
 
