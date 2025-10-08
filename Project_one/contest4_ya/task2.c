@@ -9,24 +9,32 @@ int main(){
     list = malloc(sizeof(int) * n);
     if (fool_proof != 1 || n <= 0 ){
         printf("ошибка ввода данных");
+        free(list);
         return 0;
     }
     for (int i = 0; i < n; i++)
     {
-        int fool_proof = scanf("%d",&list[i]);
+        int fool_proof =scanf("%d",&list[i]) ;
         if (fool_proof != 1){
             printf("ошибка ввода данных");
             return 0;
         }
-
     }
-    for (int i = 1; i < n; i++)
-    {
-        if (list[i] != list[i - 1]){
-            printf("NO");
-            return 0;
+    int count = 0;
+    
+    for (int i = 0; i < n; i++) {
+        int is_unique = 1;  // true
+        for (int j = i + 1; j < n; j++) {
+            if (list[i] == list[j]) {
+                is_unique = 0;  // false
+                break;
+            }
         }
-    }
-    printf("YES");
+        if (is_unique) {
+            count++;
+        }
+    }   
+    printf("%d",n-count);
+    free(list);
     return 0; 
 }

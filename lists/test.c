@@ -27,7 +27,6 @@ int main(){
     printf("Enter elem of list: \n");
     for (int i = 0; i < n; i++)
     {
-        
         int fool_proof = scanf("%c",&massive[i]);
     }
 
