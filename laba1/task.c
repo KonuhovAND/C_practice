@@ -1,0 +1,45 @@
+#define _CRT_SECURE_NO_WARNINGS
+#define MAX_SIZE 100
+#include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
+
+int main(){
+    char *list;
+    int n;
+    int fool_proof = scanf("%d",&n);
+    list = malloc(sizeof(char) * n);
+    if (fool_proof != 1 || n <= 0 || n > MAX_SIZE){
+        printf("ошибка ввода данных");
+        free(list);
+        return 0;
+    }
+    if (list == NULL) {
+        printf("ошибка выделения памяти");
+        return 0;
+    }
+
+    printf("Введите последовательность из %d символов:\nВида: A 1 2 4 B...\n", n);
+    for (int i = 0; i < n; i++)
+    {
+        int fool_proof =scanf(" %c",&list[i]) ;
+        if (fool_proof != 1){
+            printf("ошибка ввода данных");
+            free(list);
+            return 0;
+        }
+    }
+    
+    int count_numbers_after_A = 0;
+    int flag_is_A_first = 0; 
+    for (int i = 0; i < n; i++) {
+        if (list[i] == 'A') {
+            flag_is_A_first = 1;
+        } else if (flag_is_A_first && (list[i] >= '0' && list[i] <= '9')) {
+            count_numbers_after_A+=1;
+        }
+    }
+    printf("%d",count_numbers_after_A);
+    free(list);
+    return 0; 
+}
