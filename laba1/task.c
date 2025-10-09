@@ -39,7 +39,7 @@ int main(){
             count_numbers_after_A+=1;
         }
     }
-    printf("%d",count_numbers_after_A);
+    printf("%d\n",count_numbers_after_A);
     free(list);
     return 0; 
 }
