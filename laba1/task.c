@@ -12,12 +12,12 @@ int main(){
     
     if (fool_proof != 1 || n <= 0 || n > MAX_SIZE){
         printf("ошибка ввода данных");
-        free(list);
         return 0;
     }
     list = malloc(sizeof(char) * n);
     if (list == NULL) {
         printf("ошибка выделения памяти");
+        free(list);
         return 0;
     }
 
