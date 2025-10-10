@@ -52,7 +52,7 @@ int main() {
             }
         }
     }
-
+    
     for (int i = boundary; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
             if (list[i] < list[j]) {  

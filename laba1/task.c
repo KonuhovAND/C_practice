@@ -4,16 +4,18 @@
 #include <locale.h>
 #include <stdlib.h>
 
+
 int main(){
     char *list;
     int n;
     int fool_proof = scanf("%d",&n);
-    list = malloc(sizeof(char) * n);
+    
     if (fool_proof != 1 || n <= 0 || n > MAX_SIZE){
         printf("ошибка ввода данных");
         free(list);
         return 0;
     }
+    list = malloc(sizeof(char) * n);
     if (list == NULL) {
         printf("ошибка выделения памяти");
         return 0;
@@ -23,11 +25,7 @@ int main(){
     for (int i = 0; i < n; i++)
     {
         int fool_proof =scanf(" %c",&list[i]) ;
-        if (fool_proof != 1){
-            printf("ошибка ввода данных");
-            free(list);
-            return 0;
-        }
+        
     }
     
     int count_numbers_after_A = 0;
