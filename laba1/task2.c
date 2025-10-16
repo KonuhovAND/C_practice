@@ -1,4 +1,7 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
 
 int main() {
     int N;
@@ -9,7 +12,7 @@ int main() {
         printf("Ошибка ввода\n");
         return 0;
     }
-    seq = (int*)malloc(N * sizeof(int));
+    seq = malloc(N * sizeof(int));
     if (seq == NULL) {
         printf("Ошибка выделения памяти\n");
         return 0;
