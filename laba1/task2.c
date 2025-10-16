@@ -29,7 +29,7 @@ int main() {
     for (int i = 0; i < N; i++) {
         if (seq[i] >0 && i1 == -1) {
             i1 = i;
-        } else if (seq[i] >0 && i1 != -1 && i2 == -1) {
+        } else if (seq[i] >i && i1 != -1 && i2 == -1) {
             i2 = i;
             break;
         }
