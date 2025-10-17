@@ -37,15 +37,14 @@ int main() {
             break;
         }
     }
-    int sum,cnt;
-    sum = cnt = 0;
+    int sum;
+    sum = 0;
     if (i1 != -1 && i2 != -1) {
         for (int i = i1 + 1; i < i2; i++) {
             sum += seq[i];
-            cnt++;
         }
     }
     free(seq);
-    printf("%d %d\n", sum, cnt);
+    printf("%d %d\n", sum, i2-i1-1);
     return 0;
 }
