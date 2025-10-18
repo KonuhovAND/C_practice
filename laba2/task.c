@@ -7,7 +7,7 @@ int main() {
     setlocale(LC_ALL, "Russian");
     int n;
     printf("Введите размер квадратной матрицы (не более 20): ");
-    int fool_proof = scanf("%d\n", &n);
+    int fool_proof = scanf("%d", &n);
 
     if (fool_proof != 1 || n <= 0 || n > 20) {
         printf("ошибка ввода данных");
@@ -40,18 +40,19 @@ int main() {
             }
         }
     }
-    int flag = 0;
+    int flag;
     if (max == pre_max) {
-        printf("Нет второго по величине элемента");;
+        // printf("Нет второго по величине элемента");
+        flag = 0;
     } else {
-        printf("Второй по величине элемент: %.0f", pre_max);
+        // printf("Второй по величине элемент: %.0f", pre_max);
         flag = 1;
     }
     
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (i + j >= n) {
-                if (main_list[i][j] == max) {
+                if (main_list[i][j] == max && flag == 1) {
                     res_list[i][j] = pre_max;
                 } else {
                     res_list[i][j] = max;
