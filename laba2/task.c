@@ -18,7 +18,7 @@ int main() {
     printf("Введите элементы матрицы %d x %d:\n", n, n);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            fool_proof = scanf("%d", &main_list[i][j]);
+            fool_proof = scanf("%f", &main_list[i][j]);
             if (fool_proof != 1) {
                 printf("ошибка ввода данных"); 
                 return 0;
@@ -65,7 +65,7 @@ int main() {
     printf("\nМатрица A:\n");
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            printf("%4d ", main_list[i][j]);
+            printf("%4.0f ", main_list[i][j]);
         }
         printf("\n");
     }
@@ -73,7 +73,7 @@ int main() {
     printf("\nМатрица B (результат):\n");
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            printf("%4d ", res_list[i][j]);
+            printf("%4.0f ", res_list[i][j]);
         }
         printf("\n");
     }
