@@ -9,7 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-./algem/
+/algem
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
