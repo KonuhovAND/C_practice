@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <locale.h>
-
+// TODO: write user functions
 int main() {
     setlocale(LC_ALL, "Russian");
     int n;
@@ -42,10 +42,8 @@ int main() {
     }
     int flag;
     if (max == pre_max) {
-        // printf("Нет второго по величине элемента");
         flag = 0;
     } else {
-        // printf("Второй по величине элемент: %.0f", pre_max);
         flag = 1;
     }
     
