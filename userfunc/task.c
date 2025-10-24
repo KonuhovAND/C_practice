@@ -24,9 +24,6 @@ int enterMatrixData(int mas[][N],int size){
     return 1;
 }
 
-void printMatrix(const int mas[][N],int size){
-    for (int )
-}
 
 int main() {
     setlocale(LC_ALL, "Russian");
