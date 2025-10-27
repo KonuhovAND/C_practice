@@ -2,7 +2,29 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <locale.h>
-// TODO: write user functions
+
+void printfMatrix(int rows,const float list[rows][rows]){
+    for (int i=0;i < rows;i++){
+        for (int j=0;j < rows;j++){
+            printf("%.2f ", list[i][j]);
+        }
+        printf("\n");
+    }
+
+}
+
+int scanfMatrix(int rows, float list[rows][rows]){
+    for (int i = 0; i < rows; i++){
+        for (int j = 0; j < rows; j++){
+            int fool_proof =scanf("%f", &list[i][j]);
+            if (fool_proof != 1){
+                return 0;
+            }
+        }
+        printf("U entered row %d\n", i + 1);
+    }
+    return 1;
+}
 int main() {
     setlocale(LC_ALL, "Russian");
     int n;
@@ -16,27 +38,20 @@ int main() {
     float main_list[n][n];
     float res_list[n][n];
     printf("Введите элементы матрицы %d x %d:\n", n, n);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            fool_proof = scanf("%f", &main_list[i][j]);
-            if (fool_proof != 1) {
-                printf("ошибка ввода данных"); 
-                return 0;
-            }
-            res_list[i][j] = main_list[i][j];
-        }
-        printf("U entered row %d\n", i + 1);
-    }   
+    if (scanfMatrix(n, main_list) == 0) {
+        printf("ошибка ввода данных");
+        return 0;
+    }
 
-    float max = res_list[0][0];
-    float pre_max = res_list[0][0];
+    float max = main_list[0][0];
+    float pre_max = main_list[0][0];
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            if (res_list[i][j] > max) {
+            if (main_list[i][j] > max) {
                 pre_max = max;
-                max = res_list[i][j];
-            } else if (res_list[i][j] > pre_max && res_list[i][j] < max) {
-                pre_max = res_list[i][j];
+                max = main_list[i][j];
+            } else if (main_list[i][j] > pre_max && main_list[i][j] < max) {
+                pre_max = main_list[i][j];
             }
         }
     }
@@ -62,20 +77,10 @@ int main() {
     }
     
     printf("\nМатрица A:\n");
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            printf("%4.0f ", main_list[i][j]);
-        }
-        printf("\n");
-    }
+    printfMatrix(n, main_list);
     
     printf("\nМатрица B (результат):\n");
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            printf("%4.0f ", res_list[i][j]);
-        }
-        printf("\n");
-    }
+    printfMatrix(n, res_list);
 
 
     return 0;
