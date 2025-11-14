@@ -1,7 +1,6 @@
 #define _CRT_SECURE #define _CRT_SECURE_NO_WARNINGS
 #include <locale.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 void buildMatrixMax(int N,const double **A, double **B) {
   for (int i = 0; i < N; i++) {
