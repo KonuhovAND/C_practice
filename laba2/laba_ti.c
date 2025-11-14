@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void buildMatrixMax(int N, double **A, double **B) {
+void buildMatrixMax(int N,const double **A, double **B) {
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < N; j++) {
       double max = A[i][j];
@@ -56,7 +56,7 @@ void inputMatrix(int N, double **matrix) {
   }
 }
 
-void printMatrix(int N, double **matrix, const char *title) {
+void printMatrix(int N,const double **matrix, const char *title) {
   printf("\n%s:\n", title);
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < N; j++) {
