@@ -6,9 +6,9 @@
 void buildMatrixMax(int N, double **A, double **B) {
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < N; j++) {
-      double max = A[0][0];
-      for (int x = 0; x <= i; x++) {
-        for (int y = 0; y <= j; y++) {
+      double max = A[i][j];
+      for (int x = i; x < N; x++) {
+        for (int y = 0; y <=j ; y++) {
           if (A[x][y] > max)
             max = A[x][y];
         }
