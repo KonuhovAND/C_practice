@@ -1,10 +1,11 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <locale.h>
 #include <stdio.h>
-#include <stdlib.h>
 
-void buildMatrixSum(int N, double A[N][N], double B[N][N]) {
+void buildMatrixSum(int N, float A[N][N], float B[N][N]) {
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < N; j++) {
-      double sum = 0.0;
+      float sum = 0.0;
       for (int x = 0; x <= i; x++) {
         for (int y = 0; y <= j; y++) {
           sum += A[x][y];
@@ -15,10 +16,10 @@ void buildMatrixSum(int N, double A[N][N], double B[N][N]) {
   }
 }
 
-void buildMatrixMax(int N, double A[N][N], double B[N][N]) {
+void buildMatrixMax(int N, float A[N][N], float B[N][N]) {
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < N; j++) {
-      double max = A[0][0];
+      float max = A[0][0];
       for (int x = 0; x <= i; x++) {
         for (int y = 0; y <= j; y++) {
           if (A[x][y] > max)
@@ -33,17 +34,20 @@ void buildMatrixMax(int N, double A[N][N], double B[N][N]) {
 int main() {
   int N;
 
-  scanf("%d", &N);
-  double A[N][N], B[N][N];
+  if (scanf("%d", &N) == 0 || N <= 0) {
+    printf("Entered incorect data!\n");
+  }
+
+  float A[N][N], B[N][N];
   for (int i = 0; i < N; i++)
     for (int j = 0; j < N; j++)
-      scanf("%lf", &A[i][j]);
+      scanf("%f", &A[i][j]);
 
   buildMatrixSum(A, B, N);
 
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < N; j++) {
-      printf("%lf ", B[i][j]);
+      printf("%f ", B[i][j]);
     }
     printf("\n");
   }
@@ -52,7 +56,7 @@ int main() {
 
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < N; j++) {
-      printf("%lf ", B[i][j]);
+      printf("%f ", B[i][j]);
     }
     printf("\n");
   }
