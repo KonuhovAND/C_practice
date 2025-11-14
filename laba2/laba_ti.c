@@ -1,26 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-void buildMatrixSum(int N, double A[N][N], double B[N][N]) {
+void buildMatrixMax(int N, double **A, double **B) {
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < N; j++) {
-      double sum = 0.0;
-      for (int x = 0; x <= i; x++) {
-        for (int y = 0; y <= j; y++) {
-          sum += A[x][y];
-        }
-      }
-      B[i][j] = sum;
-    }
-  }
-}
-
-void buildMatrixMax(int N, double A[N][N], double B[N][N]) {
-  for (int i = 0; i < N; i++) {
-    for (int j = 0; j < N; j++) {
-      double max = A[0][0];
-      for (int x = 0; x <= i; x++) {
-        for (int y = 0; y <= j; y++) {
+      double max = A[i][j];
+      for (int x = i; x < N; x++) {
+        for (int y = j; y < N; y++) {
           if (A[x][y] > max)
             max = A[x][y];
         }
@@ -30,37 +18,82 @@ void buildMatrixMax(int N, double A[N][N], double B[N][N]) {
   }
 }
 
+double **allocateMatrix(int N) {
+  double **matrix = (double **)malloc(N * sizeof(double *));
+  if (matrix == NULL) {
+    return NULL;
+  }
+  for (int i = 0; i < N; i++) {
+    matrix[i] = (double *)malloc(N * sizeof(double));
+    if (matrix[i] == NULL) {
+      for (int j = 0; j < i; j++) {
+        free(matrix[j]);
+      }
+      free(matrix);
+      return NULL;
+    }
+  }
+  return matrix;
+}
+
+void freeMatrix(double **matrix, int N) {
+  for (int i = 0; i < N; i++) {
+    free(matrix[i]);
+  }
+  free(matrix);
+}
+
+void inputMatrix(int N, double **matrix) {
+  printf("Введите значения матрицы %dx%d:\n", N, N);
+  printf("(вводите построчно, разделяя числа пробелами)\n");
+  for (int i = 0; i < N; i++) {
+    for (int j = 0; j < N; j++) {
+      if (scanf("%lf", &matrix[i][j]) != 1) {
+        printf("Ошибка ввода данных!\n");
+        exit(1);
+      }
+    }
+  }
+}
+
+void printMatrix(int N, double **matrix, const char *title) {
+  printf("\n%s:\n", title);
+  for (int i = 0; i < N; i++) {
+    for (int j = 0; j < N; j++) {
+      printf("%8.2lf ", matrix[i][j]);
+    }
+    printf("\n");
+  }
+}
+
 int main() {
+  setlocale(LC_ALL, "Russian");
+
   int N;
+  double **A;
+  double **B;
 
-  if (scanf("Enter size of square matrix: %d ", &N) == 0 || N <= 0) {
-    printf("Entered incorect data!\n");
-    return 0;
-  }
-  double A[N][N], B[N][N];
-  printf("Enter values for matrix like that 1 1 1\n 2 2 3\n 3 3 3\n...");
-  for (int i = 0; i < N; i++) {
-    for (int j = 0; j < N; j++) {
-      scanf("%lf", &A[i][j]);
-    }
-  }
-  buildMatrixSum(A, B, N);
-
-  for (int i = 0; i < N; i++) {
-    for (int j = 0; j < N; j++) {
-      printf("%lf ", B[i][j]);
-    }
-    printf("\n");
+  printf("Введите размер квадратной матрицы: ");
+  if (scanf("%d", &N) != 1 || N <= 0) {
+    printf("Введены некорректные данные!\n");
+    return 1;
   }
 
-  buildMatrixMax(A, B, N);
-
-  for (int i = 0; i < N; i++) {
-    for (int j = 0; j < N; j++) {
-      printf("%lf ", B[i][j]);
-    }
-    printf("\n");
+  A = allocateMatrix(N);
+  B = allocateMatrix(N);
+  if (A == NULL || B == NULL) {
+    printf("Ошибка выделения памяти!\n");
+    return 1;
   }
+
+  inputMatrix(N, A);
+
+  buildMatrixMax(N, A, B);
+
+  printMatrix(N, B, "Матрица максимумов");
+
+  freeMatrix(A, N);
+  freeMatrix(B, N);
 
   return 0;
 }
