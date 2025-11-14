@@ -35,6 +35,7 @@ int main() {
 
   if (scanf("Enter size of square matrix: %d ", &N) == 0 || N <= 0) {
     printf("Entered incorect data!\n");
+    return 0;
   }
   double A[N][N], B[N][N];
   printf("Enter values for matrix like that 1 1 1\n 2 2 3\n 3 3 3\n...");
