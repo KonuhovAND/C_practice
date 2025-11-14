@@ -42,17 +42,18 @@ void freeMatrix(double **matrix, int N) {
   free(matrix);
 }
 
-void inputMatrix(int N, double **matrix) {
+int inputMatrix(int N, double **matrix) {
   printf("Введите значения матрицы %dx%d:\n", N, N);
   printf("(вводите построчно, разделяя числа пробелами)\n");
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < N; j++) {
       if (scanf("%lf", &matrix[i][j]) != 1) {
         printf("Ошибка ввода данных!\n");
-        exit(1);
+        return 1;
       }
     }
   }
+  return 0;
 }
 
 void printMatrix(int N,const double **matrix, const char *title) {
